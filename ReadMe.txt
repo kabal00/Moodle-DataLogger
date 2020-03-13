@@ -1,3 +1,1 @@
-Hallo
-
-Was passiert jetzt?
+Projektdokumentation
