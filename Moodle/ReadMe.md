@@ -7,3 +7,4 @@ V1 Herausforderungen:
 - Apps Starten in VCS
 - Mögliche Komplikationen: Threads in JavaScript für mehrere TCP Sockets
 - Neue Möglichkeit kennengelernt --> Kein TCP Socket sondern WebSocket
+- Websockets brauchen einen Socketserver, der leider nicht von Moodle gehostet werden kann
