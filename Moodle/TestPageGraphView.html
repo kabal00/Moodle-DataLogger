@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>WebSocket Test</title>
+
+<head>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js">
+  
+  </script>
+  <style>
+    table,
+    td,
+    th {
+      border: 1px solid black;
+    }
+  </style>
+
+</head>
+<body>
+<div id="tester" style="width:600px;height:250px;"></div>
+</body>
+
+  <script>
+    
+    let i = 1;
+    var wsUri = "wss://connect.websocket.in/v2/2020?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc1ZGZjOTA3OWJjMGJkNmY4NWQ5YWM4NDA2YmE5ZmM4YzBmMDkxNzM0NzBlNTA3ZDNkMDg3ZjI5M2EwZWJkNmUwNDZmZTllZTBhZGJjNTQ3In0.eyJhdWQiOiI4IiwianRpIjoiNzVkZmM5MDc5YmMwYmQ2Zjg1ZDlhYzg0MDZiYTlmYzhjMGYwOTE3MzQ3MGU1MDdkM2QwODdmMjkzYTBlYmQ2ZTA0NmZlOWVlMGFkYmM1NDciLCJpYXQiOjE1ODQyMTE4MjIsIm5iZiI6MTU4NDIxMTgyMiwiZXhwIjoxNjE1NzQ3ODIyLCJzdWIiOiI2NzAiLCJzY29wZXMiOltdfQ.eMtidCxy1LX5JvnZt8yiMZXSPIli0JiVlrUeKz_eV9FGdPClNZY4MxSnzLQPVkk6v4QtyRDRLcx2wfAWm1-jeTnlbe7KOAdyz9jKMcxy3bcmQEzp9TwTATRN78uE_eKuGpKGZcuD8_vYXuyW8N5dehGz4LacXdv9-jfFX9Zn4pHE5DR_bLlLpk0deqf4p4ky-9zvwXQWRDORMZBkQ3PYAtaTx-FWOHM8ZPmrE7ZRpQNCcvVkVwyrtMURXuxQluM8vqhFP9Qw2WNJETj7VjBJamtbXaU42o2mtk9lUDlzLVwho2SGvDM6gG0QKGYJTJH2wqefx-J39TnbSqxeHV6h-TOy_n71lEaJtaDe4-77QDaKFRdA0veQodVV6aHQKwsDBnmICPOUYtWan2ZtRZRE4PHulFVu9nM_fcdIe8376Re-xVMxm7xhM2FtfaUEz_KzaRl_fJ3qhnPH37Wvtk7j8Al8_RK2B1RjrcItqjuHJ1ckH4gJXmYkKvxAIdsxkmfmb9XgMezRC0e6S3cA6W8AbH4nHHt8HGZjAFMseSnrm7EgWSdtjdCKgRt11BCMFqe1kSLDDaJl2AsTA3s9NvVQptXjgCIRadbFVXipN6j6LhKH_lx2GQiPbu6Hnvt1aFvp7bHap4kKD6Cq3vmf_NDbMvnhuq5_EppMH0SmTgtJrSY";
+    var output;
+    var websocket = null;
+    var xValues = [0,1,2,3,4,5]
+    function init() {
+      output = document.getElementById("output");
+      testWebSocket();
+    }
+    function Sleep(milliseconds) {
+      return new Promise(resolve => setTimeout(resolve, milliseconds));
+    }
+    function testWebSocket() {
+
+      websocket = new WebSocket(wsUri);
+      websocket.onopen = function (evt) { onOpen(evt) };
+      websocket.onclose = function (evt) { onClose(evt) };
+      websocket.onmessage = function (evt) { onMessage(evt) };
+      websocket.onerror = function (evt) { onError(evt) };
+    }
+
+    function onOpen(evt) {
+      writeToScreen("CONNECTED");
+      doSend("We are connected");
+    }
+
+
+    function onMessage(evt) {
+      const res = evt.data.split(";");
+      for(n=0; n <= res.length; n++)
+      {
+        xValues[n] = n;
+      }
+      TESTER = document.getElementById('tester');
+      Plotly.newPlot(TESTER, [{
+        x: xValues,
+        y: res
+      }], {
+        margin: { t: 0 }
+      });
+      }
+      
+
+
+    function onError(evt) {
+      writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+    }
+
+    function doSend(message) {
+      writeToScreen("SENT: " + message);
+      websocket.send(message);
+    }
+
+    function writeToScreen(message) {
+      var pre = document.createElement("p");
+      pre.style.wordWrap = "break-word";
+      pre.innerHTML = message;
+      output.appendChild(pre);
+    }
+
+    window.addEventListener("load", init, false);
+
+  </script>
+  
+  <br>
+  
