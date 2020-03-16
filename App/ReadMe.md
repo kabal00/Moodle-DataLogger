@@ -4,3 +4,7 @@ Besser und viel einfacher ist die Umsetzung mit Python. Da muss einfach über pi
 Folgende Struktur muss umgesetzt werden:
 
 Moodle muss als WebSocket Client laufen --> Eine in Python/Java programmierte App ist der Server und sendet die Daten an den Client
+
+Große Herausforderung mit Zeitverzögerungen. Anfangs habe ich mit einem time.sleep(1) gearbeitet. Das hat mir alles zerschossen. Die Daten wurden irgendwie gesendet und das Timing wird nicht beachtet. Die Lösung ist ein anderer Befehl: await asyncio.sleep(1). Dazu muss allerdings der Funktion ein async am Anfang angefügt werden und import asyncio.
+
+
