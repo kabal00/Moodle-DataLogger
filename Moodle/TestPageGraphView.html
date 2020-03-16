@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8" />
-<title>WebSocket Test</title>
+<title>Temperaturüberwachung</title>
 
 <head>
   <script src="https://cdn.plot.ly/plotly-latest.min.js">
@@ -16,7 +16,8 @@
 
 </head>
 <body>
-<div id="tester" style="width:600px;height:250px;"></div>
+  <h2>Temperaturüberwachung</h2>
+<div id="tester" style="width:1000px;height:450px;"></div>
 </body>
 
   <script>
@@ -42,14 +43,14 @@
     }
 
     function onOpen(evt) {
-      writeToScreen("CONNECTED");
+      //writeToScreen("CONNECTED");
       //doSend("We are connected");
     }
 
 
     function onMessage(evt) {
       const res = evt.data.split(";");
-      writeToScreen(res);
+      //writeToScreen(res);
       for(n=0; n <= res.length; n++)
       {
         xValues[n] = n;
@@ -66,11 +67,11 @@
 
 
     function onError(evt) {
-      writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+      //writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
     }
 
     function doSend(message) {
-      writeToScreen("SENT: " + message);
+    //  writeToScreen("SENT: " + message);
       websocket.send(message);
     }
 

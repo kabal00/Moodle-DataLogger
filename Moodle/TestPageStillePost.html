@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>Stille Post</title>
+
+<head>
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script language="javascript" type="text/javascript">
+        let n = 1;
+        var wsUri = "wss://connect.websocket.in/v2/2020?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6Ijc1ZGZjOTA3OWJjMGJkNmY4NWQ5YWM4NDA2YmE5ZmM4YzBmMDkxNzM0NzBlNTA3ZDNkMDg3ZjI5M2EwZWJkNmUwNDZmZTllZTBhZGJjNTQ3In0.eyJhdWQiOiI4IiwianRpIjoiNzVkZmM5MDc5YmMwYmQ2Zjg1ZDlhYzg0MDZiYTlmYzhjMGYwOTE3MzQ3MGU1MDdkM2QwODdmMjkzYTBlYmQ2ZTA0NmZlOWVlMGFkYmM1NDciLCJpYXQiOjE1ODQyMTE4MjIsIm5iZiI6MTU4NDIxMTgyMiwiZXhwIjoxNjE1NzQ3ODIyLCJzdWIiOiI2NzAiLCJzY29wZXMiOltdfQ.eMtidCxy1LX5JvnZt8yiMZXSPIli0JiVlrUeKz_eV9FGdPClNZY4MxSnzLQPVkk6v4QtyRDRLcx2wfAWm1-jeTnlbe7KOAdyz9jKMcxy3bcmQEzp9TwTATRN78uE_eKuGpKGZcuD8_vYXuyW8N5dehGz4LacXdv9-jfFX9Zn4pHE5DR_bLlLpk0deqf4p4ky-9zvwXQWRDORMZBkQ3PYAtaTx-FWOHM8ZPmrE7ZRpQNCcvVkVwyrtMURXuxQluM8vqhFP9Qw2WNJETj7VjBJamtbXaU42o2mtk9lUDlzLVwho2SGvDM6gG0QKGYJTJH2wqefx-J39TnbSqxeHV6h-TOy_n71lEaJtaDe4-77QDaKFRdA0veQodVV6aHQKwsDBnmICPOUYtWan2ZtRZRE4PHulFVu9nM_fcdIe8376Re-xVMxm7xhM2FtfaUEz_KzaRl_fJ3qhnPH37Wvtk7j8Al8_RK2B1RjrcItqjuHJ1ckH4gJXmYkKvxAIdsxkmfmb9XgMezRC0e6S3cA6W8AbH4nHHt8HGZjAFMseSnrm7EgWSdtjdCKgRt11BCMFqe1kSLDDaJl2AsTA3s9NvVQptXjgCIRadbFVXipN6j6LhKH_lx2GQiPbu6Hnvt1aFvp7bHap4kKD6Cq3vmf_NDbMvnhuq5_EppMH0SmTgtJrSY";
+        var output;
+        var websocket = null;
+
+        function init() {
+            output = document.getElementById("output");
+            testWebSocket();
+        }
+        function Sleep(milliseconds) {
+            return new Promise(resolve => setTimeout(resolve, milliseconds));
+        }
+        function testWebSocket() {
+            websocket = new WebSocket(wsUri);
+            websocket.onopen = function (evt) { onOpen(evt) };
+            websocket.onclose = function (evt) { onClose(evt) };
+            websocket.onmessage = function (evt) { onMessage(evt) };
+            websocket.onerror = function (evt) { onError(evt) };
+        }
+
+        function onOpen(evt) {
+            doSend("We are connected");
+        }
+
+        function onMessage(evt) {
+            const temp = evt.data.split(";");
+            if (temp.length >= 2) {
+                for (i = 0; i <= temp.length; i++) {
+                    const res = temp[i].split(",");
+                    var table = document.getElementById("myTable");
+                    var row = table.insertRow(n);
+                    n++;
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    var cell3 = row.insertCell(2);
+                    var cell4 = row.insertCell(3);
+                    cell1.outerHTML = '<th scope="col" style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">' + (n - 1) + ' </th>';
+                    cell2.outerHTML = '<th scope="col" style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">' + res[0] + ' </th>';
+                    cell3.outerHTML = '<th scope="col" style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">' + res[1] + ' </th>';
+                    cell4.outerHTML = '<th scope="col" style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">' + res[2] + ' </th>';
+                }
+            }
+        }
+
+        function onError(evt) {
+            writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
+        }
+
+        function doSend(message) {
+            writeToScreen("SENT: " + message);
+        }
+
+        function writeToScreen(message) {
+            var pre = document.createElement("p");
+            pre.style.wordWrap = "break-word";
+            pre.innerHTML = message;
+            output.appendChild(pre);
+        }
+
+        window.addEventListener("load", init, false);
+
+    </script>
+
+    <h2>Stille Post</h2>
+    <div id="output"></div>
+    <table id="myTable">
+        <tr>
+            <th scope="col"
+                style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">Nr.
+            </th>
+            <th scope="col"
+                style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">Name
+            </th>
+            <th scope="col"
+                style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">
+                Gemessene
+                Temperatur</th>
+            <th scope="col"
+                style="text-align: center; border-width: 1px; border-style: solid; border-color: rgb(51, 51, 51);">
+                Gefühlte
+                Temperatur</th>
+        </tr>
+    </table>
+    <br>
+</body>
