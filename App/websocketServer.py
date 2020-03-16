@@ -1,16 +1,16 @@
-import asyncio
-import websockets
+from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 
-async def hello(websocket, path):
-    name = await websocket.recv()
-    print(f"< {name}")
+class SimpleEcho(WebSocket):
 
-    greeting = f"21.9°C"
+    def handleMessage(self):
+        # echo message back to client
+        self.sendMessage(self.data)
 
-    await websocket.send(greeting)
-    print(f"> {greeting}")
+    def handleConnected(self):
+        print(self.address, 'connected')
 
-start_server = websockets.serve(hello, "localhost", 9030)
+    def handleClose(self):
+        print(self.address, 'closed')
 
-asyncio.get_event_loop().run_until_complete(start_server)
-asyncio.get_event_loop().run_forever()
+server = SimpleWebSocketServer('', 8000, SimpleEcho)
+server.serveforever()
