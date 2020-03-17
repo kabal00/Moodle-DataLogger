@@ -1,0 +1,231 @@
+jQuery(document).ready(function($) {
+  //AJAX-Content loader
+  $(document).on('click','.load_more:not(.loading)', function(){
+    var that = $(this);
+    var page = that.data('page');
+    var ajaxurl = that.data('url');
+    var id = that.data('id');
+    var action = that.data('action');
+    var search = that.data('search');
+
+    $.ajax({
+      url : ajaxurl, 
+      type: "POST",
+      data : {
+        page : page,
+        id : id,
+        action : action,
+        search :  search,
+      },
+      beforeSend: function() {
+        that.addClass('loading');
+        that.find('.btnicon').addClass('spin');
+      },
+      error : function( response ) {
+        console.log(response);
+      },
+      success : function( response ) {
+        that.data('page', page+1);
+        $('.dynamic_content').append(response);
+        setTimeout(function(){
+          that.removeClass('loading');
+          that.find('.btnicon').removeClass('spin');
+        }, 1000);
+
+      }
+    });
+  });
+  //AJAX-Content Loader
+
+  //AJAX-Meldeformular
+  jQuery(document).ready(function($) {
+    $(document).on('click','.mk_messageform_submit', function(event){
+      event.preventDefault();
+      var formMessages = $('#ajax_message');
+      var error = "";
+      var file1 = $('[name=mk_file1]')[0].files[0];
+      var file2 = $('[name=mk_file2]')[0].files[0];
+      var file3 = $('[name=mk_file3]')[0].files[0];
+      var maxSizeMb = 2;
+
+      if($('[name=mk_name]').val() == "") {
+        error+="Der Name darf nicht leer sein.<br>";
+      }
+
+      if($('[name=mk_email]').val() == "") {
+        error+="Die Emailadresse darf nicht leer sein.<br>";
+      }
+
+      if($('[name=mk_text]').val() == "") {
+        error+="Eine Beschreibung der Meldung wäre nett ;)<br>";
+      }
+
+      if(!$('[name=mk_zustimmung]').prop('checked')) {
+        error+="Bitte der Datenübermittlung zustimmen<br>";
+      }
+
+      if(file1 !== undefined) {
+        if((file1.size / Math.pow(1024,2)) > maxSizeMb) {
+          error+="Die Datei "+file1.name+" ist größer als 2 Mb<br>";
+        }
+      }
+
+      if(file2 !== undefined) {
+        if((file2.size / Math.pow(1024,2)) > maxSizeMb) {
+          error+="Die Datei "+file2.name+" ist größer als 2 Mb<br>";
+        }
+      }
+
+      if(file3 !== undefined) {
+        if((file3.size / Math.pow(1024,2)) > maxSizeMb) {
+          error+="Die Datei "+file3.name+" ist größer als 2 Mb<br>";
+        }
+      }
+
+      if(error != "") {
+        $(formMessages).html('<script> \
+          jQuery(document).ready(function($) { \
+            $("#overlay").fadeIn(300);\
+            $("#close").click(function() {\
+              $("#overlay").fadeOut(300);\
+            });\
+          });\
+          </script> \
+          <div id="overlay"> \
+            <div class="mk_messagebox warning">\
+              <div>'+error+'<button id="close">Schließen</button></div>\
+            </div>\
+          </div>');
+      } else {
+        $.ajax({
+          type: 'POST',
+          url: $('#ajax_form').attr('action'),
+          processData: false,
+          contentType: false,
+          data: new FormData($("#ajax_form")[0]),
+          beforeSend: function() {
+            $(formMessages).html('<div class="mk_messagebox info">Die Nachricht wird gesendet<br>Bitte warten!</div>');
+          },
+          error : function( response) {
+            console.log(response);
+          },
+          success: function(response){ 
+            $(formMessages).html(response);
+          }
+        });
+      }
+    }); 
+  });
+  //ENDE AJAX-Meldeformular
+
+  //Newsticker slide
+  function ticker(){
+    $('.tickercontent div').each(function( i ) {
+    if ( this.style.display !== "none" ) {
+       $( this ).slideUp( function() { $(this).appendTo($('.tickercontent')) });
+      } else {
+       $( this ).slideDown();
+        return false;
+      }
+    }); 
+  }
+  setInterval(function(){ ticker() }, 5000);
+  // ENDE Newsticker Slide
+
+  //Menu-Dropdown
+  $('.nav-button').on('click', function (event) {
+    if($('.navbar').hasClass('collapsed')) {
+      $('.nav-menu').addClass('show');
+      $('.navbar').removeClass('collapsed');
+    } else {
+      $('.nav-menu').removeClass('show');
+      $('.navbar').addClass('collapsed');
+    }
+    
+  });
+
+  $('ul.navbar-nav').children('.menu-item-has-children').click(function(){
+    $(this).children('.sub-menu').slideToggle();
+  })
+
+  $('.menu-item-has-children a').on('click', function (event) {
+    $('#Navigation').addClass('show');
+  });
+
+  //Gallerie
+
+
+      $('.mk_gallery .slider').children().click(function() {
+        pos = mk_slide($(this), $(this).data('pos'));
+        $(this).parents('.mk_gallery').data('pos', pos);
+        centerItVariableWidth(pos);
+      });
+
+      $('.mk_gallery .view').children().click(function() {
+          $('.galleryoverlay').html($(this).find('img').clone()).css("display", "flex").fadeIn(300);
+        });
+
+        $('.mk_gallery .close').click(function() {
+          $('.galleryoverlay').fadeOut(300);
+        });
+
+      $('.mk_gallery .next').click(function() {
+        pos = $(this).parents('.mk_gallery').data('pos');
+        pos = mk_slide($(this), pos+1);
+        $(this).parents('.mk_gallery').data('pos', pos);
+        centerItVariableWidth(pos);
+      });
+
+      $('.mk_gallery .prev').click(function() {
+        pos = $(this).parents('.mk_gallery').data('pos');
+        pos = mk_slide($(this), pos-1);
+        $(this).parents('.mk_gallery').data('pos', pos);
+        centerItVariableWidth(pos);
+      });
+
+      function mk_slide(element, newpos) {
+        pos = $(element).parents('.mk_gallery').data('pos');
+        max = $(element).parents('.mk_gallery').data('count');
+        if(newpos < 1) {
+          newpos = max;
+        }
+
+        if(newpos > max) {
+          newpos = 1;
+        }
+
+        if(newpos > pos) {
+          $(element).parents(".mk_gallery").find('.view [data-pos='+((pos == 0)?max:pos)+']').animate({left: "-100%"});
+          $(element).parents(".mk_gallery").find('.view [data-pos='+newpos+']').animate({left: "0"});
+        }
+
+        if(newpos < pos) {
+          $(element).parents(".mk_gallery").find('.view [data-pos='+pos+']').animate({left: "100%"});
+          $(element).parents(".mk_gallery").find('.view [data-pos='+((newpos==0)?max:newpos)+']').animate({left: "0"});
+        }
+
+        for(i = 1; i <= max; i++ ) {
+          if(i < newpos) {
+            $(element).parents(".mk_gallery").find('.view [data-pos='+i+']').css({left: "-100%"});  
+          }
+          if(i > newpos) {
+            $(element).parents(".mk_gallery").find('.view [data-pos='+i+']').css({left: "100%"});
+          }
+
+          if(i == newpos) {
+            $(element).parents(".mk_gallery").find('.slider [data-pos='+i+']').css({border: "1px solid white", "background-color": "white"});
+          } else {
+            $(element).parents(".mk_gallery").find('.slider [data-pos='+i+']').css({border: "unset", "background-color": "unset"});
+          }
+        }
+        return newpos;
+      }
+
+      function centerItVariableWidth(pos){
+        container = $('.slider');
+        width = container.width();
+        childwidth = container.children().width(); 
+        center = ((childwidth*pos)-childwidth/2)-width/2;
+        container.scrollLeft(center);
+       }
+});
