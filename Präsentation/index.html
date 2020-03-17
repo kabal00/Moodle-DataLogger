@@ -35,34 +35,6 @@
   <!-- Optional - CSS SVG Icons (Font Awesome) -->
   <link rel="stylesheet" type='text/css' media='all' href="static/css/svg-icons.css">
 
-  <!-- SOCIAL CARDS (ADD YOUR INFO) -->
-
-  <!-- FACEBOOK -->
-  <meta property="og:url" content="http://your-url.com/"> <!-- YOUR URL -->
-  <meta property="og:type" content="article">
-  <meta property="og:title" content="WebSlides — Making HTML Presentations Easy"> <!-- EDIT -->
-  <meta property="og:description"
-    content="WebSlides is about telling stories beautifully. Just the essential features. Good karma."> <!-- EDIT -->
-  <meta property="og:updated_time" content="2017-01-04T17:20:50"> <!-- EDIT -->
-  <meta property="og:image" content="static/images/share-webslides.jpg"> <!-- EDIT -->
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@webslides"> <!-- EDIT -->
-  <meta name="twitter:creator" content="@jlantunez"> <!-- EDIT -->
-  <meta name="twitter:title" content="WebSlides — Making HTML Presentations Easy"> <!-- EDIT -->
-  <meta name="twitter:description"
-    content="WebSlides is about good karma. Just essential features. 120+ free slides ready to use."> <!-- EDIT -->
-  <meta name="twitter:image" content="static/images/share-webslides.jpg"> <!-- EDIT -->
-
-  <!-- FAVICONS -->
-  <link rel="shortcut icon" sizes="16x16" href="static/images/favicons/favicon.png">
-  <link rel="shortcut icon" sizes="32x32" href="static/images/favicons/favicon-32.png">
-  <link rel="apple-touch-icon icon" sizes="76x76" href="static/images/favicons/favicon-76.png">
-  <link rel="apple-touch-icon icon" sizes="120x120" href="static/images/favicons/favicon-120.png">
-  <link rel="apple-touch-icon icon" sizes="152x152" href="static/images/favicons/favicon-152.png">
-  <link rel="apple-touch-icon icon" sizes="180x180" href="static/images/favicons/favicon-180.png">
-  <link rel="apple-touch-icon icon" sizes="192x192" href="static/images/favicons/favicon-192.png">
 
   <!-- Android -->
   <meta name="mobile-web-app-capable" content="yes">
@@ -71,29 +43,8 @@
 </head>
 
 <body>
-  <header role="banner">
-    <nav role="navigation">
-      <p class="logo"><a href="index.html" title="WebSlides">WebSlides</a></p>
-      <ul>
-        <li class="github">
-          <a rel="external" href="https://github.com/webslides/webslides" title="Github">
-            <svg class="fa-github">
-              <use xlink:href="#fa-github"></use>
-            </svg>
-            <em>WebSlides</em>
-          </a>
-        </li>
-        <li class="twitter">
-          <a rel="external" href="https://twitter.com/webslides" title="Twitter">
-            <svg class="fa-twitter">
-              <use xlink:href="#fa-twitter"></use>
-            </svg>
-            <em>@WebSlides</em>
-          </a>
-        </li>
-        <!--  <li class="dribbble"><a rel="external" href="http://dribbble.com/webslides" title="Dribbble"><svg class="fa-dribbble"><use xlink:href="#fa-dribbble"></use></svg> <em>webslides</em></a></li> -->
-      </ul>
-    </nav>
+  <header>
+
   </header>
 
   <main role="main">
@@ -140,14 +91,14 @@
                 <p>Hier blicken wir auf die Umsetzung in Moodle. <br>
                   a) Um was geht's?<br>
                   b) Große Herausforderungen<br>
-                  c) Ergbnisse & Ausblick<br></p>
+                  c) Ergebnisse & Ausblick<br></p>
               </li>
               <li>
                 <h2>Aus Sicht von den SchülerInnen - Daniel</h2>
                 <p>Und was machen nun die SchülerInnen?<br>
                   a) Um was geht's?<br>
                   b) Zusammenspiel von Hard- und Software<br>
-                  c) Ergbnisse & Ausblick</p>
+                  c) Ergebnisse & Ausblick</p>
               </li>
             </ul>
           </div>
@@ -156,39 +107,31 @@
         <!-- .end .wrap -->
       </section>
       <section>
+        <div class="wrap aligncenter">
+          <figcaption>
+            <h2>Projektübersicht</h2>
+          </figcaption>
+          <figure class="browser">
+            <img alt="Screenshot" src="static/images/GANTT.png" style="width=70%;">
+          </figure>
+        </div>
+      </section>
+
+      <section>
+        <div class="wrap aligncenter">
+          <figcaption>
+            <h2>Machbarkeit mit Moodle?</h2>
+          </figcaption>
+          <figure>
+            <img alt="Thumbnail Why WebSlides?" src='static/images/Idee.png'" style=" width:60%;">
+
+          </figure>
+        </div>
+
+      </section>
+      <section>
         <!--.wrap = container (width: 90%) -->
-        <ul class="flexblock gallery">
-          <li>
-            <a href="demos/why-webslides.html" title="Why WebSlides?">
-              <figcaption>
-                <h2>Projektübersicht</h2>
-              </figcaption>
-              <figure>
-                <img alt="Thumbnail Why WebSlides?" src='static/images/GANTT.png'">
-                  
-                </figure>
-              </a>
-            </li>
-          </section> 
-            <section>
-              <!--.wrap = container (width: 90%) -->
-              <ul class=" flexblock gallery">
-          <li>
-            <figcaption>
-              <h2>Machbarkeit mit Moodle?</h2>
-            </figcaption>
-            <figure>
-              <img alt="Thumbnail Why WebSlides?" src='static/images/Idee.png'">
-                      
-                    </figure>
-                  </a>
-                </li>
-                 
-                
-        </section>
-        <section>
-          <!--.wrap = container (width: 90%) -->
-          <ul class=" flexblock gallery">
+        <ul class=" flexblock gallery">
           <li>
             <figcaption>
               <h2>Was kann Moodle! bzw. was kann es noch nicht?</h2>
@@ -207,19 +150,21 @@
               <h2><strong>Ist es in Moodle möglich:</strong></h2>
               <p class="text-intro"></p>
               <div class="bg-white shadow">
-                <ul class="flexblock reasons">
-                  <li>
-                    <h2>Eine Schnittstelle zwischen Hard- und Software zu ermöglichen</h2>
-                    <p>Dadurch hätte man lediglich eine Plattform für alles</p>
-                  </li>
-                  <li>
-                    <h2>Gesammelte Daten zur Anzeige zu bringen </h2>
-                    <p>Wieder eine Plattform für alles aber auch in schön </p>
-                  </li>
-                  <li>
-                    <h2>Programmierspiele zu integrieren</h2>
-                    <p>Um unsere lieben SuS zu motivieren und für uns Abwechslung zu schaffen</p>
-                  </li>
+                <ul class="flexblock zoomIn">
+                  <ul class="flexblock reasons">
+                    <li>
+                      <h2>Eine Schnittstelle zwischen Hard- und Software zu ermöglichen</h2>
+                      <p>Dadurch hätte man lediglich eine Plattform für alles</p>
+                    </li>
+                    <li>
+                      <h2>Gesammelte Daten zur Anzeige zu bringen </h2>
+                      <p>Wieder eine Plattform für alles aber auch in schön </p>
+                    </li>
+                    <li>
+                      <h2>Programmierspiele zu integrieren</h2>
+                      <p>Um unsere lieben SuS zu motivieren und für uns Abwechslung zu schaffen</p>
+                    </li>
+                  </ul>
                 </ul>
               </div>
               <!-- .end .bg-white shadow -->
@@ -229,98 +174,98 @@
       <section>
         <div class="wrap">
           <h2>Herausforderungen</h2>
-          <ul class="flexblock features">
-            <li>
-              <div>
-                <h2>
-                  Modernes Protokoll
-                </h2>
-                TCP Socket? WebSocket? Alternativen?
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>
-                  Richtige Wahl der IDE
-                </h2>
-                Schlank, flexibel, Github, einfach
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>
-                  Performance
-                </h2>
-                Code soll effizient sein
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>
-                  <span>10<sup>+</sup></span>
-                  Mögliche Verbindungen
-                </h2>
-                Alle SchülerInnen sollen sich verbinden können
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>
-                  Richtige Programmiersprache
-                </h2>
-                Java unnötig kompliziert, Python wesentlich einfacher
-              </div>
-            </li>
-            <li>
-              <div>
-                <h2>
-                  <span>0<sup>%</sup></span>
-                  Erfahrung
-                </h2>
-                mit JavaScript + HTML und trotzdem geht's!
-              </div>
-            </li>
+          <ul class="flexblock zoomIn">
+            <ul class="flexblock features">
+
+              <li>
+                <div>
+                  <h2>
+                    Modernes Protokoll
+                  </h2>
+                  TCP Socket? WebSocket? Alternativen?
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    Richtige Wahl der IDE
+                  </h2>
+                  Schlank, flexibel, Github, einfach
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    Performance
+                  </h2>
+                  Code soll effizient sein
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <span>10<sup>+</sup></span>
+                    Mögliche Verbindungen
+                  </h2>
+                  Alle SchülerInnen sollen sich verbinden können
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    Richtige Programmiersprache
+                  </h2>
+                  Java unnötig kompliziert, Python wesentlich einfacher
+                </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <span>0<sup>%</sup></span>
+                    Erfahrung
+                  </h2>
+                  mit JavaScript + HTML und trotzdem geht's!
+                </div>
+              </li>
+            </ul>
           </ul>
         </div>
       </section>
       <section>
-        <ul class="flexblock gallery">
-          <li>
-            <figcaption>
-              <h2>Warum WebSocket Protokoll?</h2>
-            </figcaption>
-            <figure>
-              <img alt="Thumbnail Why WebSlides?" src='static/images/WS_VS_TCPSOCKET.png'">
-                  
-                </figure>
-              </a>
-            </li>
-             
-        </section>
+        <span class="background-center-top" style="background-image:url('static/images/WS_VS_TCPSOCKET.png')"></span>
+        <div class="wrap">
+          <h2><br><br><br><br><br>Warum WebSocket Protokoll?</h2>
+        </div>
+      </section>
 
-        <section>
-          <div class=" wrap">
-              <div class="content-center">
-                <figure>
-                  <img alt="Server" src='static/images/Websocket Server.png'">
+
+      <section>
+        <div class=" wrap">
+          <div class="content-center">
+            <ul class="flexblock zoomIn">
+              <figure>
+                <img alt="Server" src='static/images/Websocket Server.png'">
                   
                 </figure>
+                </ul>
               </div>
               <div class=" content-center">
-              </div>
-              
-              <h2>Prinzip des Websockets?</h2>
-              <h4>Schickt bspw. ein Client eine Nachricht an den Server, so sendet<br> der Server an alle die Nachricht</h4>
-              </div>
+          </div>
 
-              </div>
+          <h2>Prinzip des Websockets?</h2>
+          <h4>Schickt bspw. ein Client eine Nachricht an den Server, so sendet<br> der Server an alle die Nachricht</h4>
+        </div>
+
+        </div>
       </section>
       <section>
         <div class=" wrap">
           <div class="content-center">
-            <figure>
-              <img alt="Screenshot" src="static/images/Whatsapp-Broadcast.png">
-            </figure>
+            <ul class="flexblock zoomIn">
+              <figure>
+                <img alt="Screenshot" src="static/images/Whatsapp-Broadcast.png">
+              </figure>
+            </ul>
           </div>
           <div class="content-center"></div>
           <h2>Prinzip des Websockets?</h2>
@@ -362,36 +307,41 @@
       <section>
         <div class=" wrap">
           <div class="content-center">
-            <figure>
-              <img alt="Server" src='static/images/Programmplan.png'" style="width:160%;">
-              
+            <ul class="flexblock zoomIn">
+              <figure>
+                <img alt="Server" src='static/images/Programmplan.png'" style=" width:160%;">
+            </ul>
             </figure>
           </div>
           <div class=" content-center">
           </div>
-          
-          <h2>Von der Idee zur Umsetzung</h2>
-          <h4>Konkret: Wir wollen Daten von SuS auslesen lassen. Diese Daten sollen an ein Websocket geschickt werden, der wiederum mit Moodle verbunden ist. Moodle zeigt die Daten dann an</h4>
-          </div>
 
-          </div>
+          <h2>Von der Idee zur Umsetzung</h2>
+          <h4>Konkret: Wir wollen Daten von SuS auslesen lassen. Diese Daten sollen an ein Websocket geschickt werden,
+            der wiederum mit Moodle verbunden ist. Moodle zeigt die Daten dann an</h4>
+        </div>
+
+        </div>
       </section>
       <section>
         <div class=" wrap">
           <div class="content-center">
-            <figure>
-              <img alt="Server" src='static/images/MeinAufgabe.png'" style="width:160%;">
-              
-            </figure>
+            <ul class="flexblock zoomIn">
+              <figure>
+                <img alt="Server" src='static/images/MeinAufgabe.png'" style=" width:160%;">
+
+              </figure>
+            </ul>
           </div>
           <div class=" content-center">
           </div>
-          
-          <h2>Von der Idee zur Umsetzung</h2>
-          <h4>Meine Aufgabe: Simulation der Hardware, um zu testen, ob Moodle Daten empfangen kann und zur anzeigen bringen kann</h4>
-          </div>
 
-          </div>
+          <h2>Von der Idee zur Umsetzung</h2>
+          <h4>Meine Aufgabe: Simulation der Hardware, um zu testen, ob Moodle Daten empfangen kann und zur anzeigen
+            bringen kann</h4>
+        </div>
+
+        </div>
       </section>
       <section>
         <div class="wrap">
@@ -399,37 +349,39 @@
           <p>Zu finden in unsrem <a href="https://mo6271.schule.hessen.de/course/view.php?id=18"
               title="Moodle Kurs der HTS">Moodle-Kurs</a>.
           </p>
-          <ul class="flexblock gallery">
-            <li>
-              <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=77" title="Wettkampf">
-                <figure>
-                  <img alt="Thumbnail Wettkampf" src="static/images/Wettkampf.jpg" style="width:75%;">
-                  <figcaption>
-                    <h2>Wettkampf</h2>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=78" title="Stille Post">
-                <figure>
-                  <img alt="Thumbnail Stille Post" src="static/images/stille_post.png">
-                  <figcaption>
-                    <h2>Stille Post</h2>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
-            <li>
-              <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=76" title="Diagramme">
-                <figure>
-                  <img alt="Thumbnail Diagramme" src="static/images/monatliche-durchschnitts.jpeg" style="width:79%">
-                  <figcaption>
-                    <h2>Diagramme</h2>
-                  </figcaption>
-                </figure>
-              </a>
-            </li>
+          <ul class="flexblock zoomIn">
+            <ul class="flexblock gallery">
+              <li>
+                <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=77" title="Wettkampf">
+                  <figure>
+                    <img alt="Thumbnail Wettkampf" src="static/images/Wettkampf.jpg" style="width:75%;">
+                    <figcaption>
+                      <h2>Wettkampf</h2>
+                    </figcaption>
+                  </figure>
+                </a>
+              </li>
+              <li>
+                <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=78" title="Stille Post">
+                  <figure>
+                    <img alt="Thumbnail Stille Post" src="static/images/stille_post.png">
+                    <figcaption>
+                      <h2>Stille Post</h2>
+                    </figcaption>
+                  </figure>
+                </a>
+              </li>
+              <li>
+                <a href="https://mo6271.schule.hessen.de/mod/lesson/view.php?id=603&pageid=76" title="Diagramme">
+                  <figure>
+                    <img alt="Thumbnail Diagramme" src="static/images/monatliche-durchschnitts.jpeg" style="width:79%">
+                    <figcaption>
+                      <h2>Diagramme</h2>
+                    </figcaption>
+                  </figure>
+                </a>
+              </li>
+            </ul>
           </ul>
         </div>
         <!-- .end .wrap -->
@@ -466,7 +418,8 @@
                 </svg>
               </span>
               <h2>03. Denn...</h2>
-              <p>Wird solch eine Seite in Moodle geöffnet führt das JavaScript den Code indiviuell für jede Instanz neu aus.</p>
+              <p>Wird solch eine Seite in Moodle geöffnet führt das JavaScript den Code indiviuell für jede Instanz neu
+                aus.</p>
             </li>
             <li>
               <div class="process step-3"></div>
@@ -476,23 +429,8 @@
                 </svg>
               </span>
               <h2>04. Und das bringt mir genau was?</h2>
-              <p>Jede Teilnehmer kann sich individuelle Websocket-Server Öffnen und mit ihnen kommunizieren, ohne großen Aufwand! Mit jeder neu geöffneten Seite wird eine neue Verbindung aufgebaut.</p>
-            </li>
-            <li>
-              <div class="process step-4"></div>
-              <span>
-                <svg class="fa-cog">
-                  <use xlink:href="#fa-cog"></use>
-                </svg>
-              </span>
-              <h2>Fakten</h2>
-              <ul>
-                <li>1. Das ist GEIL!</li>
-                <li>2. SuS können im eigenen Tempo mit dem Frontend arbeiten</li>
-                <li>3. Man kann sich auf das Wesentliche konzentrieren!</li>
-                <li>4. Man kann gute abwechslungreiche Gruppenspiele mit den SuS spielen</li>
-                <li>5. SuS werden mehr motiviert sein</li>
-              </ul>
+              <p>Jede Teilnehmer kann sich individuelle Websocket-Verbindungen öffnen und mit ihnen kommunizieren, ohne
+                großen Aufwand! Mit jeder neu geöffneten Seite wird eine neue Verbindung aufgebaut.</p>
             </li>
           </ul>
         </div>
@@ -510,7 +448,8 @@
                 </svg>
               </span>
               <h2>Speicherung der Daten</h2>
-              <p>Wenn man den Browser aktualisiert sind die Daten verloren. Das kann ein Nachteil sein. Besser wäre es, wenn die Daten gespeichert wären</p>
+              <p>Wenn man den Browser aktualisiert sind die Daten verloren. Das kann ein Nachteil sein. Besser wäre es,
+                wenn die Daten gespeichert wären</p>
             </li>
             <li>
               <div class="process step-2"></div>
@@ -530,7 +469,9 @@
                 </svg>
               </span>
               <h2>Der ultimative Moodle Kurs?</h2>
-              <p>Etwas übertrieben. Aber man muss sich vorstellen, wass alles in Moodle mit den Websockets möglich wäre. In der elektrotechnik könnte man interaktive Kurse damit durchführen und die SuS könnten sich durch SoL weitereintwickeln!</p>
+              <p>Etwas übertrieben. Aber man muss sich vorstellen, wass alles in Moodle mit den Websockets möglich wäre.
+                In der elektrotechnik könnte man interaktive Kurse damit durchführen und die SuS könnten sich durch SoL
+                weitereintwickeln!</p>
             </li>
             <li>
               <div class="process step-3"></div>
@@ -540,7 +481,8 @@
                 </svg>
               </span>
               <h2>Aber...</h2>
-              <p>Das alles kann recht aufwendig sein... Dafür braucht man viel Zeit und ein komplettes didaktisches Konzept dahinter. ... man darf ja noch Träumen</p>
+              <p>Das alles kann recht aufwendig sein... Dafür braucht man viel Zeit und ein komplettes didaktisches
+                Konzept dahinter. ... man darf ja noch Träumen</p>
             </li>
           </ul>
         </div>
@@ -551,10 +493,10 @@
           <div class="content-right text-serif">
             <h2>
               <strong>Vielen Dank an Euch!</strong>
-              
+
             </h2>
             <p>Bleibt im Kontakt!</p>
-            
+
           </div>
           <!-- .end .content-right -->
         </div>
